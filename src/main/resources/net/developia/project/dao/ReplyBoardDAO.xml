@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.developia.project.dao.ReplyBoardDAO">
+	<insert id = "replyInsert" parameterType = "ReplyBoardDTO">
+		insert into reply_board_t(re_no,seq_first,re_context, name, regdate)
+	    values(#{re_no},reply_board_t_no_seq.nextval, #{re_context}, #{name}, sysdate)	
+	</insert>
+	
+	<select id ="replyList" parameterType="long" resultType= "ReplyBoardDTO">
+		SELECT 
+			re_no
+			,name
+			,re_context
+			,regdate
+			,seq_first
+				FROM reply_board_t
+				WHERE re_no =${re_no}
+				ORDER BY SEQ_FIRST ASC
+	</select>
+	
+	<delete id="replyDelete" parameterType="long">
+		DELETE reply_board_t
+		WHERE  seq_first=#{seq_first_no}
+	</delete>
+	
+	<!-- <select id="getReplySeqNo" resultType="long">
+		SELECT   B.*
+		FROM	 (SELECT  rownum AS rnum,
+					      A.*
+			      FROM	  (  SELECT  
+					      			  rt.seq_first
+					         FROM	  board_t	  bt,
+								  	  reply_board_t rt
+							 WHERE	  bt.no = rt.re_no
+							 AND	  rt.re_no = #{re_no}
+				             ORDER BY rt.seq_first) A) B
+		WHERE    rnum = #{replyNo}
+	</select> -->
+</mapper>
