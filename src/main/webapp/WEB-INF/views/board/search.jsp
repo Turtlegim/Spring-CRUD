@@ -11,12 +11,17 @@
 <script type="text/javascript" src="<c:url value="/webjars/jquery/3.6.0/dist/jquery.js" />"></script>
 <title>Insert title here</title>
 </head>
-
+<style>
+caption {
+    text-align: center;
+    font-size: xx-large;
+}
+</style>
 <body>
 <script type = "text/javascript">
 
 </script>
-	<div class=search_sort>
+	<div class=search_sort style="float: right;">
 		<form id="searchForm" name="searchForm" method="get" action="${app}/main/board/${new_no}/${pg}/search">
 			<span class="select01" onChange={this.onChange.bind(this)}>
 				<select name="searchType" id="searchType" class="sel_type">
@@ -25,19 +30,20 @@
 					<option value="name">이름</option>
 				</select>
 			</span>
-			<input type="text" name='searchword' placeholder="검색어를 입력해주세요." id="searchWord" value="${searchword}" >
-			<button type="submit" id='btn_search' class=" btn_search">검색</button>
+			<input type="text" name='searchword' placeholder="검색어를 입력해주세요."
+				id="searchWord" value="${searchword}">
+			<button type="submit" id='btn_search' class="btn btn-info">검색</button>
 		</form>
 
 	</div>
 
-	<table border="1">
+	<table border="1" class="table table-dark">
 		<caption>게시물 리스트</caption>
 		<tr>
 			<td colspan="5">현재 페이지 : ${pg} / 전체 페이지 수 : ${pageCount}</td>
 		</tr>
 		<tr>
-			<th>번호</th>
+			<th>글번호</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -63,20 +69,16 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5">
-			<c:if test="${startPage != 1}">
+			<td colspan="5" style="text-align: center;"><c:if test="${startPage != 1}">
 				[<a href="../${startPage - 1}/search?searchType=${searchType}&searchword=${searchword}">이전블럭</a>]
-			</c:if>
-			<c:forEach begin="${startPage}" end="${endPage}" var="p">
-				<c:if test="${p == pg}">${p}</c:if>
-				<c:if test="${p != pg}">
-					<a href="../${p}/search?searchType=${searchType}&searchword=${searchword}">${p}</a>
-				</c:if>
-			</c:forEach>
-			<c:if test="${endPage != pageCount}">
+		</c:if> <c:forEach begin="${startPage}" end="${endPage}" var="p">
+					<c:if test="${p == pg}">${p}</c:if>
+					<c:if test="${p != pg}">
+						<a href="../${p}/search?searchType=${searchType}&searchword=${searchword}">${p}</a>
+					</c:if>
+				</c:forEach> <c:if test="${endPage != pageCount}">
 				[<a href="../${endPage + 1}/search?searchType=${searchType}&searchword=${searchword}">다음블럭</a>]
-			</c:if>
-			</td>
+		</c:if></td>
 		</tr>
 	</table>
 	<br />

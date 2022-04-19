@@ -7,13 +7,19 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+caption {
+    text-align: center;
+    font-size: xx-large;
+}
+</style>
 <body>
 <c:set var="dto" value="${boardDTO}" />
 <form method="post">
-<table>
+<table class="table table-striped">
 <caption>게시물 수정</caption>
 <tr>
-	<th>번호</th>
+	<th>글번호</th>
 	<td>${dto.no}<input type="hidden" name="no"  
 		required="required" value="${dto.no}" /></td>
 </tr>
@@ -28,8 +34,8 @@
 </tr>
 <tr>
 	<th>비밀번호</th>
-	<td><input type="password" name="password" required="required" /><br/>
-		* 처음 글 작성시 입력했던 비밀번호를 재 입력하세요
+	<td><input type="password" name="password" required="required"/><br/>
+		<p style="color: red;" >* 처음 글 작성시 입력했던 비밀번호를 재 입력하세요</p>
 	</td>
 </tr>
 <tr>

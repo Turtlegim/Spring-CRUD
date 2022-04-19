@@ -6,9 +6,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+caption {
+    text-align: center;
+    font-size: 30px;
+}
+</style>
 <body>
 <form method="post">
-<table>
+<table class="table table-striped">
 <caption>게시판 생성</caption>
 <tr>
 	<th>게시판 이름</th>

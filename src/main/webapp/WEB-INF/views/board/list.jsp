@@ -11,7 +11,12 @@
 <script type="text/javascript" src="<c:url value="/webjars/jquery/3.6.0/dist/jquery.js" />"></script>
 <title>Insert title here</title>
 </head>
-
+<style>
+caption {
+    text-align: center;
+    font-size: xx-large;
+}
+</style>
 <body>
 <script type = "text/javascript">
 
@@ -27,18 +32,18 @@
 			</span>
 			<input type="text" name='searchword' placeholder="검색어를 입력해주세요."
 				id="searchWord" value="">
-			<button type="submit" id='btn_search' class=" btn_search">검색</button>
+			<button type="submit" id='btn_search' class="btn btn-info">검색</button>
 		</form>
 
 	</div>
 
-	<table border="1" style="width: 100%;">
+	<table border="1" class="table table-dark">
 		<caption>게시물 리스트</caption>
 		<tr>
 			<td colspan="5">현재 페이지 : ${pg} / 전체 페이지 수 : ${pageCount}</td>
 		</tr>
 		<tr>
-			<th>번호</th>
+			<th>글번호</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -64,7 +69,7 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="5"><c:if test="${startPage != 1}">
+			<td colspan="5" style="text-align: center;"><c:if test="${startPage != 1}">
 			[<a href="../${startPage - 1}/">이전블럭</a>]
 		</c:if> <c:forEach begin="${startPage}" end="${endPage}" var="p">
 					<c:if test="${p == pg}">${p}</c:if>

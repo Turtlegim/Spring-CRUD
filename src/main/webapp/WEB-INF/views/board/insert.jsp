@@ -9,9 +9,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+caption {
+    text-align: center;
+    font-size: xx-large;
+}
+</style>
 <body>
 <form method="post">
-<table>
+<table class="table table-striped">
 <caption>게시물 작성</caption>
 <tr>
 	<th>제목</th>
@@ -36,8 +42,6 @@
 </tr>
 </table>
 </form>
-<h1>Upload with Ajax</h1>
-
 <div class ='uploadDiv'>
 	<input type ='file' name ='uploadFile' multiple>
 </div>
